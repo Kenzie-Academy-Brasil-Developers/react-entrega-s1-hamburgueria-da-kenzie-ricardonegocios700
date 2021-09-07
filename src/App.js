@@ -13,27 +13,29 @@ function App() {
     { id: 6, name: "Coca", category: "Bebidas", price: 4.99 },
     { id: 7, name: "Fanta", category: "Bebidas", price: 4.99 },
   ]);
+  const joao = [1, 2, 3];
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentSale, setCurrentSale] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
 
-  const showProducts = () => {
-    // ?  não sei se quer mesmo mudar a variável
-    setFilteredProducts(
-      products.filter((item) => {
-        return item === filteredProducts;
-      })
-    );
+  const showProducts = (parametro = "Hamburguer") => {
+    setFilteredProducts(products.filter((item) => item.name === parametro));
   };
+
   const handleClick = () => {
     //deve receber por parâmetro o id e usar o método find para
     //encontrar o item no array com o mesmo id do produto e será
     //responsável por adicionar o produto selecionado no state
     //currentSale;
   };
-  console.log(products);
+
   return (
     <div className="App">
+      <p>{products[0].name}</p>
+      <Product
+        showProducts={showProducts}
+        filteredProducts={filteredProducts}
+      />
       <MenuContainer products={products} />
       {/* <Product /> */}
       <div id="totalSale">

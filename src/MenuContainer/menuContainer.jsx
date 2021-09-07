@@ -6,7 +6,7 @@ const MenuContainer = ({ products }) => {
     <div className="productList">
       <ul>
         {products.map((item, index) => (
-          <li key={index}>
+          <li key={item.id}>
             <p>{item.name}</p>
             <p>{item.category}</p>
             <p>{item.price}</p>
