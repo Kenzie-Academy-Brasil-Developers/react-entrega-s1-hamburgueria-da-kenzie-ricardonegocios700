@@ -1,0 +1,12 @@
+.productList {
+  width: 100%;
+}
+.productList ul {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.productList ul li {
+  margin: 0 25px;
+}
