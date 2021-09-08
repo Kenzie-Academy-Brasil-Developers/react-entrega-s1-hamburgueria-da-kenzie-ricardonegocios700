@@ -18,8 +18,12 @@ function App() {
   const [currentSale, setCurrentSale] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
 
-  const showProducts = (parametro = "Hamburguer") => {
-    setFilteredProducts(products.filter((item) => item.name === parametro));
+  const showProducts = (parametro) => {
+    setFilteredProducts(
+      products.filter(
+        (item) => item.name.toLowerCase() === parametro.toLowerCase()
+      )
+    );
   };
 
   const handleClick = () => {
@@ -36,7 +40,13 @@ function App() {
         showProducts={showProducts}
         filteredProducts={filteredProducts}
       />
-      <MenuContainer products={products} />
+      {console.log(filteredProducts.length)}
+      {filteredProducts.length === 0 ? (
+        <MenuContainer products={products} />
+      ) : (
+        <MenuContainer products={filteredProducts} />
+      )}
+
       {/* <Product /> */}
       <div id="totalSale">
         <p>Total da venda: R$ {cartTotal}</p>

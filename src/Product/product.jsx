@@ -2,9 +2,6 @@ import { useState } from "react";
 
 const Product = ({ showProducts, filteredProducts }) => {
   const [seekValue, setSeekValue] = useState("");
-  {
-    console.log(filteredProducts);
-  }
 
   return (
     <form>
