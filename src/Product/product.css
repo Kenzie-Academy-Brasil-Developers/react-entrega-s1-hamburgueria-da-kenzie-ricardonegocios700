@@ -1,0 +1,9 @@
+#formProd input {
+  height: 20px;
+}
+#formProd button {
+  height: 26px;
+  background-color: #1e90ff;
+  color: #ffffff;
+  margin-left: 5px;
+}

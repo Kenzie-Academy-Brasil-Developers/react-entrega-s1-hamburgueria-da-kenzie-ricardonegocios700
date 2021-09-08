@@ -1,11 +1,11 @@
+import "./product.css";
 import { useState } from "react";
 
 const Product = ({ showProducts, filteredProducts }) => {
   const [seekValue, setSeekValue] = useState("");
 
   return (
-    <form>
-      <p>: {seekValue}</p>
+    <form id="formProd">
       <input
         type="text"
         value={seekValue}
@@ -19,7 +19,7 @@ const Product = ({ showProducts, filteredProducts }) => {
           setSeekValue("");
         }}
       >
-        botão
+        Pesquisar
       </button>
     </form>
   );

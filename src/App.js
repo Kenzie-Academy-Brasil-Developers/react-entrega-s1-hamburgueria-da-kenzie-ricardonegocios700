@@ -2,6 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import MenuContainer from "./MenuContainer/menuContainer";
 import Product from "./Product/product";
+import MyCart from "./MyCart/myCart";
 
 function App() {
   const [products, setProducts] = useState([
@@ -20,37 +21,41 @@ function App() {
 
   const showProducts = (parametro) => {
     setFilteredProducts(
-      products.filter(
-        (item) => item.name.toLowerCase() === parametro.toLowerCase()
+      products.filter((item) =>
+        item.name.toLowerCase().includes(parametro.toLowerCase())
       )
     );
   };
 
-  const handleClick = () => {
-    //deve receber por parâmetro o id e usar o método find para
-    //encontrar o item no array com o mesmo id do produto e será
-    //responsável por adicionar o produto selecionado no state
-    //currentSale;
+  const handleClick = (toAdd) => {
+    currentSale.includes(toAdd)
+      ? setCurrentSale([...currentSale])
+      : setCurrentSale(
+          [...currentSale, toAdd],
+          setCartTotal(cartTotal + toAdd.price) //uia, funciona
+        );
   };
 
   return (
     <div className="App">
-      <p>{products[0].name}</p>
       <Product
         showProducts={showProducts}
         filteredProducts={filteredProducts}
       />
-      {console.log(filteredProducts.length)}
-      {filteredProducts.length === 0 ? (
-        <MenuContainer products={products} />
+      {filteredProducts.length > 0 ? (
+        <MenuContainer products={filteredProducts} handleClick={handleClick} />
       ) : (
-        <MenuContainer products={filteredProducts} />
+        <MenuContainer products={products} handleClick={handleClick} />
       )}
-
-      {/* <Product /> */}
       <div id="totalSale">
-        <p>Total da venda: R$ {cartTotal}</p>
+        <p>
+          Total da venda: R$ <strong>{cartTotal}</strong>
+        </p>
       </div>
+      <MyCart currentSale={currentSale} />
+
+      {/* Se não estivesse atrasado teria colocado um remove no carrinho 
+      mas me perdi d+ no transito das informações, acho q agora entendi */}
     </div>
   );
 }
