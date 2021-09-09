@@ -49,7 +49,7 @@ function App() {
       )}
       <div id="totalSale">
         <p>
-          Total da venda: R$ <strong>{cartTotal}</strong>
+          Total da venda: R$ <strong>{cartTotal.toFixed(2)}</strong>
         </p>
       </div>
       <MyCart currentSale={currentSale} />
